@@ -58,7 +58,7 @@
   </section>
 </template>
 <script lang="ts">
-import { computed, defineComponent, nextTick, onMounted, onUnmounted, reactive, ref, toRefs, } from 'vue';
+import { computed, defineComponent, nextTick, onMounted, onUnmounted, reactive, ref, toRefs, watch, } from 'vue';
 import { useStoreHooks } from '@/hooks';
 import ShoppingCar from './ShoppingCar.vue';
 import ShoppingCarList from './ShoppingCarList.vue';
@@ -124,6 +124,9 @@ export default defineComponent({
         _scrollInit();
         getHeight();
       })
+    })
+    watch(state.shoppingCarList, (val: any) => {
+      console.log(val);
     })
     onUnmounted(() => {
       clearInterval(state.leftScrollTimer);
