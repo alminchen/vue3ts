@@ -63,6 +63,13 @@ import { useStoreHooks } from '@/hooks';
 import ShoppingCar from './ShoppingCar.vue';
 import ShoppingCarList from './ShoppingCarList.vue';
 import BScroll from "better-scroll"
+interface dataObj {
+  type_accumulation: string,
+  type_name: string,
+  name: string,
+  one_food_id: number,
+  unit_price: number
+}
 export default defineComponent({
   components: { ShoppingCar, ShoppingCarList },
   name: 'BusinessContentl',
@@ -217,10 +224,10 @@ export default defineComponent({
         }
       }, 100 / 10)
     }
-    const add_mask_food = (data: any) => {
-      add_shopping_car(data.type_accumulation, data.type_name, data.name, data.one_food_id, data.unit_price)
+    const add_mask_food = ({ type_accumulation, type_name, name, one_food_id, unit_price }: dataObj) => {
+      add_shopping_car(type_accumulation, type_name, name, one_food_id, unit_price)
     }
-    let add_food = (n: any, x: any, e: any): void => {
+    let add_food = (n: dataObj, x: dataObj, e: any): void => {
       add_shopping_car(n.type_accumulation, n.name, x.name, x.one_food_id, x.unit_price)
       shopping_car.value.ball_fly(e);
     }
