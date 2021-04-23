@@ -1,0 +1,200 @@
+/**
+* @module ShoppingCar
+* @author: ArMChAn
+* @description: 什么都不用说,我其实是一个假前端!
+* @since: 创建时间  2021-04-23 09:53:51
+*/
+
+<template>
+  <div class="shopping_car" v-show="changeShowType == 'food'">
+    <div :class="['car_icon', { nothing: !allNums }]" ref="carIcon" @click="showCarList">
+      <span class="tips_after" v-if="allNums !== 0">{{ allNums }}</span>
+    </div>
+    <div class="car_words">
+      <h4>￥{{ allTotalPrice }}</h4>
+      <p>配送费:￥{{ sendConst }}</p>
+    </div>
+    <a href="javascript:;" :class="['cartview', { cantpay: allTotalPrice < sendConst }]" @click.stop="goToPay">去结算</a>
+  </div>
+</template>
+<script lang="ts">
+import { computed, defineComponent, reactive, ref, toRefs } from 'vue';
+import { useStoreHooks } from '@/hooks';
+export default defineComponent({
+  name: 'ShoppingCar',
+  props: {
+    changeShowType: {
+      type: String,
+      default: () => 'food'
+    },
+    sendConst: {
+      type: Number,
+      default: () => 0
+    }
+  },
+  setup: (_props: any, ctx: any) => {
+    const { getters, } = useStoreHooks();
+    let carIcon: HTMLElement | any = ref(null);
+    const allNums = computed(() => getters['allNums']);
+    const allTotalPrice = computed(() => getters['allTotalPrice'])
+    const state = reactive({
+      shoppingCarShow: false,
+      allNub: 0
+    })
+    const showCarList = (): void => {
+      ctx.emit("showList")
+    }
+    const goToPay = (): void => {
+      ctx.emit("goPay")
+    }
+    const ball_fly = (e: { target: { getBoundingClientRect: any } }) => {
+      let bound: any = e.target.getBoundingClientRect();
+      let boundTop: number = bound.top;
+      let boundLeft: number = bound.left;
+      let target: any = carIcon.value;
+      let targetData: any = target.getBoundingClientRect();
+      let targetTop: number = targetData.top;
+      let targetLeft: number = targetData.left;
+      let father: any = document.createElement("div");
+      father.className = "father flyball";
+      let child: any = document.createElement("div");
+      child.className = "child inner";
+      father.appendChild(child);
+      father.style.top = `${boundTop}px`;
+      father.style.left = `${boundLeft}px`;
+      document.body.appendChild(father);
+      setTimeout(() => {
+        let leftTrans: number = targetLeft - boundLeft + targetData.width / 2;
+        let topTrans: number = targetTop - boundTop + targetData.width / 2;
+        father.style.transform = `translate3d(${leftTrans}px,0,0)`;
+        child.style.cssText = `transform: translate3d(0px,${topTrans}px,0)`;
+        setTimeout(() => {
+          father.parentNode.removeChild(father);
+          target.classList.add("tantantan");
+        }, 500);
+      }, 10);
+    }
+    return {
+      ...toRefs(state),
+      allNums,
+      allTotalPrice,
+      showCarList,
+      goToPay,
+      ball_fly,
+      carIcon
+    }
+  }
+})
+</script>
+<style lang='scss' scoped>
+//@import url(); 引入公共css类
+.shopping_car {
+  height: 1.2rem;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #3d3d3f;
+  padding-left: 2rem;
+  box-sizing: border-box;
+  z-index: 10;
+  .car_icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    position: absolute;
+    left: 0.2rem;
+    top: -0.25rem;
+    background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1OCA1OCIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzPjxmaWx0ZXIgaWQ9ImEiIHdpZHRoPSIyMDAlIiBoZWlnaHQ9IjIwMCUiIHg9Ii01MCUiIHk9Ii01MCUiIGZpbHRlclVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCI+PGZlT2Zmc2V0IGluPSJTb3VyY2VBbHBoYSIgcmVzdWx0PSJzaGFkb3dPZmZzZXRPdXRlcjEiLz48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIxLjUiIGluPSJzaGFkb3dPZmZzZXRPdXRlcjEiIHJlc3VsdD0ic2hhZG93Qmx1ck91dGVyMSIvPjxmZUNvbG9yTWF0cml4IHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMC4wOCAwIiBpbj0ic2hhZG93Qmx1ck91dGVyMSIgcmVzdWx0PSJzaGFkb3dNYXRyaXhPdXRlcjEiLz48ZmVNZXJnZT48ZmVNZXJnZU5vZGUgaW49InNoYWRvd01hdHJpeE91dGVyMSIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT48L2ZpbHRlcj48cGF0aCBpZD0iYiIgZD0iTTcuNjE0IDQuMDUxYy0xLjA2Ni4wODYtMS40NTItLjM5OC0xLjc1Mi0xLjU4NEM1LjU2MiAxLjI4LjMzIDUuODguMzMgNS44OGwzLjcxIDE5LjQ3NmMwIC4xNDgtMS41NiA3LjUxNS0xLjU2IDcuNTE1LS40ODkgMi4xOS4yOTIgNC4yNyAzLjU2IDQuMzIgMCAwIDM2LjkxNy4wMTcgMzYuOTIuMDQ3IDEuOTc5LS4wMTIgMi45ODEtLjk5NSAzLjAxMy0zLjAzOS4wMy0yLjA0My0xLjA0NS0yLjk3OC0yLjk4Ny0yLjk5M0w4LjgzIDMxLjE5MnMuODYtMy44NjUgMS4wNzctMy44NjVjMCAwLTUuNzg4LjEyMiAzMi4wNjUtMS45NTYuNjA2LS4wMzMgMi4wMTgtLjc2NCAyLjI5OC0xLjg0OCAxLjExMy00LjMxNyA0LjAwOC0xMy4yNiA0LjQ1OC0xNS42NC45MzItNC45MjUgMi4wNjEtOC41NTgtNC4yOC03LjQwNSAwIDAtMzUuNzY4IDMuNDg3LTM2LjgzMyAzLjU3M3oiLz48L2RlZnM+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBmaWx0ZXI9InVybCgjYSkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMgMikiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDUuMDM4IDcuODA4KSI+PG1hc2sgaWQ9ImMiIGZpbGw9IiNmZmYiPjx1c2UgeGxpbms6aHJlZj0iI2IiLz48L21hc2s+PHVzZSBmaWxsPSIjRkZGIiB4bGluazpocmVmPSIjYiIvPjxwYXRoIGZpbGw9IiMyMDczQzEiIGQ9Ik01My45NjIgNy43NzRsLTUuNzAxIDE5LjMwNS00MC43OCAxLjU3NHoiIG9wYWNpdHk9Ii4xIiBtYXNrPSJ1cmwoI2MpIi8+PC9nPjxwYXRoIHN0cm9rZT0iI0ZGRiIgc3Ryb2tlLXdpZHRoPSI2IiBkPSJNOS4zNzQgMTguNzIyUzcuODY4IDExLjI4MyA3LjMyMyA4LjcxQzYuNzc4IDYuMTM2IDUuODYgNS4zMyAzLjk3OCA0LjUyIDIuMDk2IDMuNzEzLjM2NyAyLjI4Ni4zNjcgMi4yODYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxjaXJjbGUgY3g9IjQ2IiBjeT0iNTEiIHI9IjQiIGZpbGw9IiNGRkYiLz48Y2lyY2xlIGN4PSIxMiIgY3k9IjUxIiByPSI0IiBmaWxsPSIjRkZGIi8+PC9nPjwvc3ZnPg==)
+      #3190e8 center no-repeat;
+    border: 0.12rem solid #444;
+    box-shadow: 0 -0.08rem 0.053333rem 0 rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    background-size: 60% auto;
+    &.noting {
+      background-color: #444;
+    }
+    .tips_after {
+      background: #ff461d;
+      color: #fff;
+      font-size: 0.3rem;
+      padding: 0 0.2rem;
+      border-radius: 0.25rem;
+      text-align: center;
+      height: 0.5rem;
+      line-height: 0.5rem;
+      position: absolute;
+      top: -0.2rem;
+      right: -0.2rem;
+    }
+  }
+  .car_words {
+    color: #fff;
+    h4 {
+      font-size: 0.5rem;
+    }
+    p {
+      font-size: 0.3rem;
+    }
+  }
+  .cartview {
+    padding: 0 0.5rem;
+    height: 1.2rem;
+    background: #4cd964;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.5rem;
+    line-height: 1.2rem;
+    &.cantpay {
+      background: #535356;
+    }
+  }
+}
+</style>
+<style lang="scss">
+.flyball {
+  position: fixed;
+  top: 0;
+  left: 0;
+  -webkit-transition: -webkit-transform 0.5s linear;
+  transition: -webkit-transform 0.5s linear;
+  transition: transform 0.5s linear;
+  transition: transform 0.5s linear, -webkit-transform 0.5s linear;
+}
+.flyball .inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #3190e8;
+  border-radius: 50%;
+}
+.flyball,
+.flyball .inner {
+  will-change: transform; /* css3自带的开启GPU加速 */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.flyball .inner {
+  -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.3, -0.2, 1, 0);
+  transition: -webkit-transform 0.5s cubic-bezier(0.3, -0.2, 1, 0);
+  transition: transform 0.5s cubic-bezier(0.3, -0.2, 1, 0);
+  transition: transform 0.5s cubic-bezier(0.3, -0.2, 1, 0), -webkit-transform 0.5s cubic-bezier(0.3, -0.2, 1, 0);
+}
+
+.father {
+  width: 0.5rem;
+  height: 0.5rem;
+  position: fixed;
+  z-index: 999;
+}
+.child {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #3190e8;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+</style>
