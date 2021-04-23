@@ -6,9 +6,9 @@ export function setDPR (): any {
   if (window.devicePixelRatio === 2) {
     viewport.setAttribute('content', 'width=device-width,initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no');
   }
-  if (window.devicePixelRatio === 3) {
-    viewport.setAttribute('content', 'width=device-width,initial-scale=0.3333333333333333, maximum-scale=0.3333333333333333, minimum-scale=0.3333333333333333, user-scalable=no');
-  }
+  // if (window.devicePixelRatio === 3) {
+  //   viewport.setAttribute('content', 'width=device-width,initial-scale=0.3333333333333333, maximum-scale=0.3333333333333333, minimum-scale=0.3333333333333333, user-scalable=no');
+  // }
 }
 export function remChange (): any {
   const resizeEvt: any = 'orientationchange' in window ? 'orientationchange' : 'resize';
