@@ -117,6 +117,7 @@ export default defineComponent({
     let rightLi = ref<null | HTMLElement>(null);
     let typeTitle = ref<null | HTMLElement>(null);
     let shopping_car: any = ref<null | HTMLElement>(null)
+    console.log(shopping_car);
     onMounted(() => {
       state.sendConst = ctx.commodity.send_cost;
       // init();
@@ -137,12 +138,15 @@ export default defineComponent({
     const init = (): void => {
       rightControlLeftClass()
     }
+    // 左右 Li 的节点集合
     const setLleftNode = (el: HTMLElement) => {
       state.leftNode.push(el)
     }
+    // 右侧 LI 的 title 节点集合
     const setRightNode = (el: HTMLElement) => {
       state.rightNode.push(el)
     }
+    // 右侧 Li 的节点集合
     const setRightNodeLi = (el: HTMLElement) => {
       state.rightNodeLi.push(el)
     }

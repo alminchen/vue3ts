@@ -30,6 +30,7 @@
     "better-scroll": "^2.3.0",
     "eslint": "^7.24.0",
     "eslint-plugin-vue": "^7.9.0",
+    "jsonp": "^0.2.1",
     "sass": "^1.32.11",
     "sass-loader": "^10.0.1",
     "swiper": "^6.5.7",
