@@ -12,7 +12,7 @@
         <h2 class="list-group-title">{{group.title}}</h2>
         <uL>
           <li @click="selectItem(item)" v-for="(item, index) in group.items" class="list-group-item" :key="index">
-            <img class="avatar" :src="item.avatar" />
+            <img class="avatar" v-lazy="item.avatar" @error="errorImage" />
             <span class="name">{{item.name}}</span>
           </li>
         </uL>
@@ -65,6 +65,9 @@ export default defineComponent({
     const listGroup = (el: HTMLElement) => {
       state.listGroupNode.push(el);
     }
+    const errorImage = (e: any) => {
+      e.target.src = 'http://t8.baidu.com/it/u=3571592872,3353494284&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1603764281&t=bedd2d52d62e141cbb08c462183601c7'
+    }
     const shortcutList = computed(() => {
       return props.data.map((group: { title: string }) => {
         return group.title.substr(0, 1)
@@ -107,7 +110,6 @@ export default defineComponent({
     const _calculateHeight = () => {
       state.listHeight = [];
       const list = state.listGroupNode;
-      console.log(list);
       let height = 0;
       state.listHeight.push(height);
       list.forEach((item: { clientHeight: number; }) => {
@@ -141,7 +143,6 @@ export default defineComponent({
       let fixedTop = newVal > 0 && newVal < TITLE_HEIGHT ? newVal - TITLE_HEIGHT : 0;
       if (state.fixedTop === fixedTop) return;
       state.fixedTop = fixedTop;
-      console.log(fixedTop);
       fixed.value.style.transform = `translate3d(0,${fixedTop}px,0)`;
     })
     return {
@@ -157,7 +158,8 @@ export default defineComponent({
       refresh,
       scroll,
       _calculateHeight,
-      fixed
+      fixed,
+      errorImage
     }
   }
 })

@@ -9174,17 +9174,15 @@ vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
 
-vue-swipe@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.npm.taobao.org/vue-swipe/download/vue-swipe-2.4.0.tgz#af65420417cc65a21a454022f755cb5d661c56ea"
-  integrity sha1-r2VCBBfMZaIaRUAi91XLXWYcVuo=
-  dependencies:
-    wind-dom "0.0.3"
-
 vue-template-es2015-compiler@^1.9.0:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
+
+vue3-lazyload@^0.2.2-beta:
+  version "0.2.2-beta"
+  resolved "https://registry.nlark.com/vue3-lazyload/download/vue3-lazyload-0.2.2-beta.tgz#c75df1a8553b60fbfd8324d083cb0e71c94dd26d"
+  integrity sha1-x13xqFU7YPv9gyTQg8sOcclN0m0=
 
 vue@^3.0.0:
   version "3.0.11"
@@ -9404,11 +9402,6 @@ which@^2.0.1:
   integrity sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==
   dependencies:
     isexe "^2.0.0"
-
-wind-dom@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.npm.taobao.org/wind-dom/download/wind-dom-0.0.3.tgz#3456e3d959dbebdcbf76ca68c6a4e8142f26360f"
-  integrity sha1-NFbj2Vnb69y/dspoxqToFC8mNg8=
 
 word-wrap@^1.2.3:
   version "1.2.3"
