@@ -6,7 +6,7 @@
 */
 
 <template>
-  <scroll :listen-scroll="listenScroll" :probe-type="probeType" :data="data" class="listview" ref="listview">
+  <scroll @scroll="scroll" :listen-scroll="listenScroll" :probe-type="probeType" :data="data" class="listview" ref="listview">
     <ul>
       <li v-for="(group,index) in data" class="list-group" :key="index" :ref="listGroup">
         <h2 class="list-group-title">{{group.title}}</h2>
@@ -75,19 +75,19 @@ export default defineComponent({
     }
     const fixedTitle = computed(() => {
       if (state.scrollY > 0) return "";
-      return state.listData[state.currentIndex] ? state.listData[state.currentIndex].title : ""
+      return props.data[state.currentIndex] ? props.data[state.currentIndex].title : ""
     })
     const selectItem = (item: any): void => {
       ctx.emit("select", item)
     }
-    const onShortcutTouchStart = (e: any): void => {
+    const onShortcutTouchStart = (e: { target: any; touches: any[]; }): void => {
       let anchorIndex = getData(e.target, "index");
       let firstTouch: any = e.touches[0];
       state.touch.y1 = firstTouch.pageY;
       state.touch.anchorIndex = anchorIndex;
       _scrollTo(anchorIndex)
     }
-    const onShortcutTouchMove = (e: any): void => {
+    const onShortcutTouchMove = (e: { touches: any[]; }): void => {
       let firstTouch = e.touches[0];
       state.touch.y2 = firstTouch.pageY;
       let delta = ((state.touch.y2 - state.touch.y1) / ANCHOR_HEIGHT) | 0;
@@ -141,6 +141,7 @@ export default defineComponent({
       let fixedTop = newVal > 0 && newVal < TITLE_HEIGHT ? newVal - TITLE_HEIGHT : 0;
       if (state.fixedTop === fixedTop) return;
       state.fixedTop = fixedTop;
+      console.log(fixedTop);
       fixed.value.style.transform = `translate3d(0,${fixedTop}px,0)`;
     })
     return {
