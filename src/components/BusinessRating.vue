@@ -47,7 +47,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, } from 'vue';
-import YellowStar from "@/components/YellowStar.vue"
+import YellowStar from "@/components/YellowStar"
 export default defineComponent({
   name: 'BusinessRating',
   props: {
