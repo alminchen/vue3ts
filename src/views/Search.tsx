@@ -3,6 +3,11 @@ import { useStoreHooks } from '@/hooks';
 import { useRouter, useRoute } from "vue-router"
 import "@/assets/sass/search.scss"
 import OneBusiness from "@/components/OneBusiness.vue"
+interface search {
+  search_text: string,
+  search_res: any[],
+  keyword: string
+}
 export default defineComponent({
   name: "Search",
   props: {},
@@ -11,7 +16,7 @@ export default defineComponent({
     const { getters } = useStoreHooks();
     const router = useRouter();
     const route = useRoute();
-    const state: any = reactive({
+    const state: search = reactive({
       search_text: "",
       search_res: [],
       keyword: route?.params?.keyword.toString()
@@ -19,7 +24,7 @@ export default defineComponent({
     const back = () => {
       router.go(-1)
     }
-    watch(() => state.search_text, (text) => {
+    watch(() => state.search_text, (text: string) => {
       state.search_res = [];
       sameMethod(text)
     })
