@@ -21,22 +21,20 @@ export default defineComponent({
     }
     watch(() => state.search_text, (text) => {
       state.search_res = [];
+      sameMethod(text)
+    })
+    const getFalseBussinessbrief = computed(() => getters['getFalseBussinessbrief'])
+    onMounted(() => {
+      sameMethod(state.keyword)
+    })
+    const sameMethod = (text: string) => {
       const data = getFalseBussinessbrief.value;
       for (const x in data) {
         if (data[x].shop_name.includes(text)) {
           state.search_res.push(data[x])
         }
       }
-    })
-    const getFalseBussinessbrief = computed(() => getters['getFalseBussinessbrief'])
-    onMounted(() => {
-      const data = getFalseBussinessbrief.value;
-      for (const x in data) {
-        if (data[x].shop_name.includes(state.keyword)) {
-          state.search_res.push(data[x])
-        }
-      }
-    })
+    }
     const htmlEl = () => {
       return state.search_res.map((item: any) => {
         return <OneBusiness item={item}></OneBusiness>
