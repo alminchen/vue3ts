@@ -61,7 +61,7 @@ export default defineComponent({
       <>
         <div class='fixed_nav'>
           <RouterLink to="/">{htmlElHome()}</RouterLink>
-          <RouterLink to="/myzone">{htmlElOrder()}</RouterLink>
+          <RouterLink to="/order">{htmlElOrder()}</RouterLink>
           <RouterLink to="/myzone">{htmlElMyzone()}</RouterLink>
         </div>
       </>

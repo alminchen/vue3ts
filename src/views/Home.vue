@@ -142,7 +142,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, onMounted, toRefs, reactive, computed, onUnmounted } from 'vue';
-import FixNav from "@/components/FixNav.vue"
+import FixNav from "@/components/FixNav"
 import Swiper, { Autoplay, EffectCoverflow, EffectCube, Pagination, Navigation } from "swiper";
 Swiper.use([Autoplay, EffectCoverflow, EffectCube, Pagination, Navigation]);
 import "swiper/swiper-bundle.min.css";

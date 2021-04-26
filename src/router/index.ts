@@ -27,6 +27,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/order",
     name: "Order",
     component: () => import(/* webpackChunkName: "order" */ "../views/Order")
+  },
+  {
+    path: "/search/:keyword",
+    name: "Search",
+    component: () => import(/* webpackChunkName: "search" */ "../views/Search")
   }
 ]
 

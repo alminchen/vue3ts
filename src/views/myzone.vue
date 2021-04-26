@@ -8,20 +8,24 @@
 <template>
   <div class="singer" ref="singer">
     <list-view :data="singers" ref="list"></list-view>
+    <fix-nav></fix-nav>
   </div>
 </template>
 <script lang="ts">
 import ListView from '@/components/scroll/ListView.vue';
+import FixNav from "@/components/FixNav"
 import { getSingerList } from "@/api/singer"
 import Singer from "@/common/singer"
+import { useStoreHooks } from '@/hooks';
 import { defineComponent, reactive, toRefs, ref, onMounted, watch, nextTick, } from 'vue';
 const HOT_NAME = "热门";
 const HOT_SINGER_LEN = 10;
 export default defineComponent({
-  components: { ListView },
+  components: { ListView, FixNav },
   name: 'myzone',
   props: {},
   setup: () => {
+    const { dispatch } = useStoreHooks();
     const state: any = reactive({
       singers: [],
       show: false
@@ -30,6 +34,7 @@ export default defineComponent({
     onMounted(() => {
       getSingerList_()
       handlePlaylist();
+      dispatch("setWhichpage", "myzone")
     })
     const singer: any = ref(null);
     const list: any = ref(null);
