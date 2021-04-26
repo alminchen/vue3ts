@@ -38,7 +38,7 @@
       </div>
     </div>
     <business-content v-show="changeShowType == 'food'" :height="computedContentHeight" :commodity="commodity" :content-show="changeShowType"></business-content>
-    <business-rating :height="computedContentHeight" :commodity="commodity"></business-rating>
+    <business-rating v-show="changeShowType == 'rating'" :height="computedContentHeight" :commodity="commodity"></business-rating>
   </div>
 </template>
 <script lang="ts">
