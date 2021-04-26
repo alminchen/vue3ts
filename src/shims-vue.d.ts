@@ -7,3 +7,4 @@ declare module '*.vue' {
 declare module "swiper"
 declare module "jsonp"
 declare module "vue3-lazyload"
+declare module "*.png"

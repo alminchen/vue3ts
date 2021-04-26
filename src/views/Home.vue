@@ -167,6 +167,7 @@ export default defineComponent({
     console.log(getFalseBussinessbrief.value.length);
     onMounted(() => {
       dispatch("setLogin", true)
+      dispatch("setWhichpage", "homepage")
       new Swiper(".swiper1", {
         pagination: {
           el: ".swiper-pagination",
