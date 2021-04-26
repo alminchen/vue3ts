@@ -12,7 +12,7 @@ export default defineComponent({
     onMounted(()=>{
       dispatch("setWhichpage","order")
     })
-    const htmlEl  = ():any=>{
+    const htmlEl  = ():HTMLElement=>{
       return _getFalseOrder.value.map((item: { store_name: string; order_state: string; order_birth_time: Date; order_brief_info: string; order_price: number; })=>{
         return <div class="order_one">
           <div class="order_img">
