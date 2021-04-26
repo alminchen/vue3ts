@@ -1,0 +1,25 @@
+.fixed_nav {
+  width: 10rem;
+  height: 1.2rem;
+  background: #fff;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 0.28rem;
+  z-index: 999;
+
+  svg {
+    width: 0.45rem;
+    height: 0.45rem;
+    display: block;
+    margin: 0.2rem auto 0.1rem;
+  }
+
+  .one_fixed_nav {
+    width: 32.6%;
+    display: inline-block;
+    height: 1.2rem;
+    text-align: center;
+  }
+}
