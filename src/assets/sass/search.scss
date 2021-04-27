@@ -24,3 +24,13 @@
     font-size: 0.4rem;
   }
 }
+
+.search_wrap {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.search-content {
+  height: calc(100% - 0.9rem);
+  overflow: hidden;
+}
