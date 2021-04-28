@@ -12,11 +12,11 @@ export default defineComponent({
       default: () => ({})
     }
   },
+  emits: ['reduceCarFood', "clearShopping", "addCarFood"],
   setup: (_props: any, ctx: any) => {
     const clearShop = (): void => {
       ctx.emit("clearShopping")
     }
-    console.log(_props.carList);
     const reduceFood = (foodid: number): void => {
       ctx.emit("reduceCarFood", foodid)
     }

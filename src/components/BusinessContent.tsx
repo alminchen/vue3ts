@@ -141,7 +141,15 @@ export default defineComponent({
         return <span></span>
       }
     }
-
+    const mask = () => {
+      if (state.shoppingCarShow || state.alertMaskShow) {
+        return <div class="mask" onClick={hide}></div>
+      }
+    }
+    const hide = () => {
+      state.shoppingCarShow = false;
+      state.alertMaskShow = false;
+    }
     onMounted(() => {
       state.sendConst = props.commodity.send_cost;
       nextTick(() => {
@@ -241,7 +249,7 @@ export default defineComponent({
       }
     }
     const goPayStatus = (): void => {
-      if (!state.allNub) {
+      if (state.allNub) {
         state.alertMaskShow = !state.alertMaskShow;
       }
     }
@@ -269,6 +277,7 @@ export default defineComponent({
           </div>
           <shopping-car change-show-type={props.contentShow} send-const={state.sendConst} onShow={shoppingCarShowIn} onGoPay={goPayStatus} onBallFly={ballFly}></shopping-car>
           <shopping-car-list car-list={state.shoppingCarList} shopping-car-show={state.shoppingCarShow} onClearShopping={cleanShopCar} onReduceCarFood={reduce_food} onAddCarFood={add_mask_food}></shopping-car-list>
+          {mask()}
         </section>
       </>
     )

@@ -287,7 +287,7 @@ export default defineComponent({
       }
     }
     const goPayStatus = (): void => {
-      if (!state.allNub) {
+      if (state.allNub) {
         state.alertMaskShow = !state.alertMaskShow;
       }
     }
