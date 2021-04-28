@@ -1,4 +1,4 @@
-import { defineComponent, } from 'vue';
+import { defineComponent, inject, } from 'vue';
 import "../assets/sass/yellowstar.scss"
 export default defineComponent({
   name: "YellowStar",
@@ -9,6 +9,8 @@ export default defineComponent({
     }
   },
   setup (props: any) {
+    const as: any = inject("a");
+    as();
     const htmlEl = () => {
       return new Array(5).fill("").map((_item: any, index: number) => {
         return <svg key={index}>

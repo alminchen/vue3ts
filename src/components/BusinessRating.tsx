@@ -1,4 +1,4 @@
-import { defineComponent, } from 'vue';
+import { defineComponent, provide, } from 'vue';
 import YellowStar from "@/components/YellowStar";
 import "@/assets/sass/businessRating.scss";
 import img from "../assets/images/slider-pic/slider-pic2.jpeg"
@@ -16,6 +16,10 @@ export default defineComponent({
   },
   components: { YellowStar },
   setup: (props: any) => {
+    const ac = () => {
+      console.log(1);
+    }
+    provide("a", ac)
     const diffEl = () => {
       if (props.commodity.high_or_low) {
         return <span>高</span>

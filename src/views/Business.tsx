@@ -15,7 +15,7 @@ export default defineComponent({
     const state = reactive({
       id!: route?.params?.id.toString(),
       changeShowType: "food",
-      computedContentHeight!: window.innerHeight - (window.innerWidth / 10) * 4.2,
+      computedContentHeight!: Math.ceil(window.innerHeight - (window.innerWidth / 10) * 4.2),
       addFun: () => ({})
     })
     const getFalseBussinessInfo = computed(() => getters['getFalseBussinessInfo'])
