@@ -58,8 +58,8 @@ export default defineComponent({
     })
     const leftLiEl = () => {
       const commodity = props.commodity.commodity;
-      return commodity.map((item: { name: any; type_accumulation: any; }, index: any) => {
-        return <li ref={setLleftNode} class={{ active_ia: index == currentIndex.value }} onClick={() => { selectLeft(index) }}>{item.name}{leftFloatEl(item.type_accumulation)}</li>
+      return commodity.map((item: { name: any; type_accumulation: any; }, index: number) => {
+        return <li key={index} ref={setLleftNode} class={{ active_ia: index == currentIndex.value }} onClick={() => { selectLeft(index) }}>{item.name}{leftFloatEl(item.type_accumulation)}</li>
       })
     }
     const currentIndex = computed(() => {
@@ -89,8 +89,8 @@ export default defineComponent({
 
     const rightLiEl = () => {
       const commodity = props.commodity.commodity;
-      return commodity.map((n: { name: any; description: any; foods: any; }) => {
-        return <li ref={setRightNodeLi}>
+      return commodity.map((n: { name: any; description: any; foods: any; }, index: number) => {
+        return <li ref={setRightNodeLi} key={index}>
           <header class="type_title ell" ref={setRightNode} >
             <strong class="ell">{n.name}</strong>
             <span>{n.description}</span>
@@ -100,8 +100,8 @@ export default defineComponent({
       })
     }
     const rightDivEl = (n: any, data: { name: any; tips: any; month_sales: any; satisfy_rate: any; unit_price: any; one_food_id: string | number; }[]) => {
-      return data.map((x: { name: any; tips: any; month_sales: any; satisfy_rate: any; unit_price: any; one_food_id: string | number; }) => {
-        return <div class="single_commodity" >
+      return data.map((x: { name: any; tips: any; month_sales: any; satisfy_rate: any; unit_price: any; one_food_id: string | number; }, idx: number) => {
+        return <div class="single_commodity" key={idx} >
           <div class="single_l">
             <img src={imgSrc} />
           </div>

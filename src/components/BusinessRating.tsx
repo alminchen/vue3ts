@@ -25,8 +25,8 @@ export default defineComponent({
     }
     const evaluate = () => {
       const data = props.commodity.evaluate;
-      return data.map((item: { username: string; time: Date; evaluate_code: number | undefined; send_time: Date; evaluate_details: string; }) => {
-        return <div class="evaluate" >
+      return data.map((item: { username: string; time: Date; evaluate_code: number | undefined; send_time: Date; evaluate_details: string; }, index: number) => {
+        return <div class="evaluate" key={index}>
           <div class="user_img">
             <img src={img} />
           </div>

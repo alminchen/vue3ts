@@ -55,8 +55,8 @@ export default defineComponent({
     }
     const liList = () => {
       const data = Object.values(_props.carList);
-      return data.map((item: any) => {
-        return <li>
+      return data.map((item: any, index: number) => {
+        return <li key={index}>
           <div class="food_name ell">{item.name}</div>
           <div class="food_unit_price">￥{(item.count * item.unit_price).toFixed(2)}</div>
           <div class="food_nub">

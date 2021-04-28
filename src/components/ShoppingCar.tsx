@@ -41,9 +41,10 @@ export default defineComponent({
         const topTrans: number = targetTop - boundTop + targetData.width / 2;
         father.style.transform = `translate3d(${leftTrans}px,0,0)`;
         child.style.cssText = `transform: translate3d(0px,${topTrans}px,0)`;
+        target.classList.add("tantantan");
         setTimeout(() => {
           father.parentNode.removeChild(father);
-          target.classList.add("tantantan");
+          target.classList.remove("tantantan");
         }, 500);
       }, 10);
     }

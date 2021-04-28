@@ -10,8 +10,8 @@ export default defineComponent({
   },
   setup (props: any) {
     const htmlEl = () => {
-      return new Array(5).fill("").map(() => {
-        return <svg >
+      return new Array(5).fill("").map((_item: any, index: number) => {
+        return <svg key={index}>
           <use xlinkHref="#rating-star"></use>
         </svg>
       })
