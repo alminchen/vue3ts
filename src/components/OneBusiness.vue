@@ -6,7 +6,7 @@
 */
 
 <template>
-  <section class='tj_business' @click.stop="goShopDetail(item.path)">
+  <div class='tj_business' @click.stop="goShopDetail(item.path)">
     <div class="one_business clear">
       <div class="business_img">
         <img src="../assets/images/slider-pic/slider-pic1.jpeg" alt="">
@@ -52,7 +52,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 <script lang="ts">
 import { defineComponent, } from 'vue';

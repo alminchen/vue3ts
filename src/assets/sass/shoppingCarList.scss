@@ -1,0 +1,83 @@
+.sp_lists {
+  position: absolute;
+  bottom: 1.2rem;
+  width: 100%;
+  left: 0;
+  background: #fff;
+  z-index: 9;
+  font-size: 0.5rem;
+
+  header {
+    border-bottom: 1px solid #eee;
+    padding: 0.25rem;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    color: #666;
+
+    .sp_words {
+      padding: 0 0.15rem;
+      border-left: 0.09rem solid #3190e8;
+      font-size: 0.45rem;
+    }
+
+    .clear {
+      float: right;
+      font-size: 0.4rem;
+
+      svg {
+        width: 0.5rem;
+        height: 0.5rem;
+        vertical-align: text-top;
+      }
+    }
+  }
+
+  ul.sp_content {
+    max-height: 6.5rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    li {
+      height: 1.3rem;
+      border-bottom: 1px solid #eee;
+      padding: 0 0.3rem;
+      line-height: 1.3rem;
+
+      >div {
+        float: left;
+      }
+
+      .food_name {
+        width: 50%;
+        font-size: 0.4rem;
+      }
+
+      .food_unit_price {
+        width: 20%;
+        text-align: right;
+        color: #f60;
+      }
+
+      .food_nub {
+        width: 30%;
+        text-align: right;
+
+        svg {
+          fill: #3190e8;
+          width: 0.5rem;
+          height: 0.5rem;
+          vertical-align: middle;
+        }
+
+        span {
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}
+
+.commodity_count {
+  color: #666;
+  margin: 0 0.15rem;
+}

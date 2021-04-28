@@ -1,0 +1,164 @@
+.business_content {
+  padding-bottom: 1.2rem;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+
+  .business_div-right {
+    flex: 1;
+  }
+
+  .same_business {
+    height: 100%;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  ul {
+
+    // overflow-y: auto;
+    // overflow: hidden;
+    // height: 100%;
+    &.business_left {
+      width: 2.5rem;
+      float: left;
+
+      li {
+        padding: 0.45rem 0.3rem;
+        font-size: 0.4rem;
+        position: relative;
+        border-bottom: 1px solid #ccc;
+        position: relative;
+
+        .left_red {
+          background: #ff461d;
+          color: #fff;
+          position: absolute;
+          right: 0.08rem;
+          top: 0.08rem;
+          font-size: 0.3rem;
+          min-width: 0.4rem;
+          text-align: center;
+          border-radius: 0.2rem;
+          padding: 0.02rem 0.05rem;
+        }
+      }
+
+      li.active_ia {
+        background: #fff;
+
+        &:after {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 0.1rem;
+          height: 100%;
+          background: #3190e8;
+        }
+      }
+    }
+
+    &.business_right {
+      // margin-left: 2.5rem;
+      background: #fff;
+
+      li {
+        .type_title {
+          padding: 0.2rem;
+          box-sizing: border-box;
+          width: 100%;
+          background: #f1f1f1;
+          line-height: 0.6rem;
+
+          strong {
+            font-size: 0.45rem;
+            color: #666;
+          }
+
+          span {
+            font-size: 0.3rem;
+            color: #999;
+          }
+        }
+
+        .single_commodity {
+          background: #fff;
+          padding: 0.3rem;
+          border-bottom: 1px solid #ccc;
+
+          .single_l {
+            width: 1.5rem;
+            height: 1.5rem;
+
+            img {
+              width: 100%;
+            }
+
+            float: left;
+          }
+
+          .single_r {
+            margin-left: 1.7rem;
+
+            h4 {
+              font-size: 0.5rem;
+            }
+
+            p {
+              font-size: 0.3rem;
+              color: #999;
+              text-align: justify;
+            }
+
+            .xiaolq {
+              font-size: 0.4rem;
+              color: #666;
+            }
+
+            .add_remove {
+              margin-top: 0.2rem;
+              height: 0.5rem;
+              line-height: 0.5rem;
+              font-size: 0.4rem;
+
+              span {
+                font-size: 0.45rem;
+                font-weight: 600;
+                color: #f60;
+                vertical-align: middle;
+              }
+
+              .add_remove_btn {
+                float: right;
+                z-index: 12121212;
+
+                .commodity_count {
+                  color: #666;
+                  margin: 0 0.15rem;
+                }
+
+                svg {
+                  fill: #3190e8;
+                  width: 0.5rem;
+                  height: 0.5rem;
+                  vertical-align: middle;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.mask {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}

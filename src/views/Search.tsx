@@ -1,8 +1,8 @@
-import { computed, defineComponent, onMounted, reactive, watch, ref, nextTick } from "vue"
+import { computed, defineComponent, onMounted, reactive, watch, nextTick } from "vue"
 import { useStoreHooks } from '@/hooks';
 import { useRouter, useRoute } from "vue-router"
 import "@/assets/sass/search.scss"
-import OneBusiness from "@/components/OneBusiness.vue"
+import OneBusiness from "@/components/OneBusiness"
 import BScroll from "better-scroll"
 import { falseBussinessbrief } from "@/falsedata/falsedata"
 interface search {
