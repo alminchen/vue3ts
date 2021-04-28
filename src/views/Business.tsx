@@ -4,10 +4,11 @@ import { useRoute } from "vue-router"
 import "@/assets/sass/business.scss"
 import topImg from "../assets/images/shop-logo.png"
 import test from "@/components/test"
-import BusinessContent from "@/components/BusinessContent"
+import BusinessContent from "@/components/BusinessContent";
+import BusinessRating from "@/components/BusinessRating"
 export default defineComponent({
   name: "Business",
-  components: { test, BusinessContent },
+  components: { test, BusinessContent, BusinessRating },
   setup () {
     const { getters } = useStoreHooks();
     const route = useRoute();
@@ -30,9 +31,9 @@ export default defineComponent({
     }
     const changeEl = () => {
       if (state.changeShowType == 'food') {
-        return <BusinessContent height={state.computedContentHeight} commodity={commodity.value}></BusinessContent>
+        return <business-content height={state.computedContentHeight} commodity={commodity.value}></business-content>
       } else {
-        return <span>2</span>
+        return <business-rating height={state.computedContentHeight} commodity={commodity.value}></business-rating>
       }
     }
     return () => (
