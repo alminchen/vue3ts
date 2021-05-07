@@ -29,7 +29,7 @@ export default defineComponent({
     }
   },
   components: { ShoppingCar, test, ShoppingCarList },
-  setup (props: any) {
+  setup (props) {
     const businessLeft: any = ref<null | HTMLElement>(null);
     const ullist: any = ref<null | HTMLElement>(null);
     const { dispatch } = useStoreHooks();

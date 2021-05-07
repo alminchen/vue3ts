@@ -28,7 +28,7 @@ export default defineComponent({
       singer.value.style.bottom = 0;
     }
     const getSingerList_ = async () => {
-      await getSingerList().then(async (res: any) => {
+      await getSingerList().then(async (res: { data: { list: any[]; }; }) => {
         state.singers = normalizeSinger(res.data.list);
       }).catch((err: any) => {
         console.log(err);
@@ -42,7 +42,7 @@ export default defineComponent({
         })
       }
     })
-    const normalizeSinger = (list: any) => {
+    const normalizeSinger = (list: any[]) => {
       const map: any = {
         hot: {
           title: HOT_NAME,

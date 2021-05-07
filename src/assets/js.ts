@@ -11,13 +11,13 @@ export function setDPR (): any {
   // }
 }
 export function remChange (): any {
-  const resizeEvt: any = 'orientationchange' in window ? 'orientationchange' : 'resize';
+  const resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
   const widthProportion = function (): number {
-    const doc: any = document.body || document.documentElement;
+    const doc: HTMLElement = document.body || document.documentElement;
     const p: number = doc.clientWidth;
     return p / 10;
   };
-  const changePage = function (): any {
+  const changePage = function () {
     document.getElementsByTagName('html')[0].setAttribute('style', 'font-size:' + widthProportion() + 'px !important');
   };
   changePage();
