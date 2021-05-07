@@ -1,24 +1,9 @@
-/**
-* @module myzone
-* @author: ArMChAn
-* @description: 什么都不用说,我其实是一个假前端!
-* @since: 创建时间  2021-04-24 11:18:46
-*/
-
-<template>
-  <div class="singer" ref="singer">
-    <list-view :data="singers" ref="list"></list-view>
-    <fix-nav></fix-nav>
-  </div>
-</template>
-<script lang="ts">
-// import ListView from '@/components/scroll/ListView.vue';
 import ListView from "@/components/scroll-tsx/ListView"
 import FixNav from "@/components/FixNav"
 import { getSingerList } from "@/api/singer"
 import Singer from "@/common/singer"
 import { useStoreHooks } from '@/hooks';
-import { defineComponent, reactive, toRefs, ref, onMounted, watch, nextTick, } from 'vue';
+import { defineComponent, reactive, ref, onMounted, watch, nextTick, } from 'vue';
 const HOT_NAME = "热门";
 const HOT_SINGER_LEN = 10;
 export default defineComponent({
@@ -58,7 +43,7 @@ export default defineComponent({
       }
     })
     const normalizeSinger = (list: any) => {
-      let map: any = {
+      const map: any = {
         hot: {
           title: HOT_NAME,
           items: [],
@@ -87,9 +72,9 @@ export default defineComponent({
           })
         )
       });
-      let hot = [], ret = [];
-      for (let key in map) {
-        let val = map[key];
+      const hot = [], ret = [];
+      for (const key in map) {
+        const val = map[key];
         if (val.title.match(/[a-zA-Z]/)) {
           ret.push(val);
         } else if (val.title === HOT_NAME) {
@@ -101,22 +86,13 @@ export default defineComponent({
       });
       return hot.concat(ret);
     }
-    return {
-      ...toRefs(state),
-      singer,
-      list,
-      handlePlaylist,
-      getSingerList_,
-      normalizeSinger
-    }
+    return () => (
+      <>
+        <div class="singer" ref={singer} style={{ position: "fixed", top: "0", right: "0", bottom: "0", left: "0" }}>
+          <list-view data={state.singers} ref={list}></list-view>
+          <fix-nav></fix-nav>
+        </div>
+      </>
+    )
   }
 })
-</script>
-<style lang="scss" scoped>
-.singer {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-}
-</style>
