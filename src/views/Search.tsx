@@ -91,8 +91,8 @@ export default defineComponent({
       state.search_res = [...state.search_res, ...getFalseBussinessbrief.value];
     }
     const htmlEl = () => {
-      return state.search_res.map((item: any) => {
-        return <OneBusiness item={item}></OneBusiness>
+      return state.search_res.map((item: any, index: number) => {
+        return <OneBusiness item={item} key={index}></OneBusiness>
       })
     }
 
