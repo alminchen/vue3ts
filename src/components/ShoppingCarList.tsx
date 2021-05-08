@@ -20,7 +20,8 @@ export default defineComponent({
     const reduceFood = (foodid: number): void => {
       ctx.emit("reduceCarFood", foodid)
     }
-    const addFood = (type_accumulation: string,
+    const addFood = (
+      type_accumulation: string,
       type_name: string,
       name: string,
       one_food_id: number,

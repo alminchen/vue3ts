@@ -13,8 +13,7 @@ export default defineComponent({
   },
   setup: (props: any) => {
     const router = useRouter();
-    const goShopDetail = (e: MouseEvent, path: any): any => {
-      console.log(e);
+    const goShopDetail = (path: string) => {
       router.push(`/business${path}`)
     }
     const shopName = () => {
@@ -62,7 +61,7 @@ export default defineComponent({
     }
     return () => (
       <>
-        <div class='tj_business' onClick={(e) => { goShopDetail(e, props.item.path) }}>
+        <div class='tj_business' onClick={() => { goShopDetail(props.item.path) }}>
           <div class="one_business clear">
             <div class="business_img">
               <img src={pic1} alt="" />

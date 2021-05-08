@@ -8,7 +8,7 @@ export default defineComponent({
       default: () => ''
     }
   },
-  setup (porops: any) {
+  setup (porops) {
     const router = useRouter();
     const back_once = () => {
       router.go(-1)

@@ -58,7 +58,7 @@ export default defineComponent({
     })
     const leftLiEl = () => {
       const commodity = props.commodity.commodity;
-      return commodity.map((item: { name: any; type_accumulation: any; }, index: number) => {
+      return commodity.map((item: { name: string; type_accumulation: string; }, index: number) => {
         return <li key={index} ref={setLleftNode} class={{ active_ia: index == currentIndex.value }} onClick={() => { selectLeft(index) }}>{item.name}{leftFloatEl(item.type_accumulation)}</li>
       })
     }
@@ -69,7 +69,7 @@ export default defineComponent({
       })
       return indexFind > 0 ? indexFind : 0
     })
-    const leftFloatEl = (text: any) => {
+    const leftFloatEl = (text: string) => {
       if (state.reNub[text]) {
         return <span class="left_red">{state.reNub[text]}</span>
       } else {
@@ -89,7 +89,7 @@ export default defineComponent({
 
     const rightLiEl = () => {
       const commodity = props.commodity.commodity;
-      return commodity.map((n: { name: any; description: any; foods: any; }, index: number) => {
+      return commodity.map((n: { name: string; description: string; foods: any[]; }, index: number) => {
         return <li ref={setRightNodeLi} key={index}>
           <header class="type_title ell" ref={setRightNode} >
             <strong class="ell">{n.name}</strong>
@@ -99,8 +99,8 @@ export default defineComponent({
         </li>
       })
     }
-    const rightDivEl = (n: any, data: { name: any; tips: any; month_sales: any; satisfy_rate: any; unit_price: any; one_food_id: string | number; }[]) => {
-      return data.map((x: { name: any; tips: any; month_sales: any; satisfy_rate: any; unit_price: any; one_food_id: string | number; }, idx: number) => {
+    const rightDivEl = (n: { name: string; description: string; foods: any[]; }, data: { name: string; tips: string; month_sales: string; satisfy_rate: number; unit_price: number; one_food_id: number; }[]) => {
+      return data.map((x, idx) => {
         return <div class="single_commodity" key={idx} >
           <div class="single_l">
             <img src={imgSrc} />
@@ -125,7 +125,7 @@ export default defineComponent({
         </div>
       })
     }
-    const reduceAddEl = (n: any, x: any, one_food_id: string | number) => {
+    const reduceAddEl = (n: { name: string; description: string; foods: any[]; }, x: { name?: string; tips?: string; month_sales?: string; satisfy_rate?: number; unit_price?: number; one_food_id: number; }, one_food_id: number) => {
       if (state.shoppingCarList[one_food_id]) {
         return <svg onClick={() => { reduce_food(x.one_food_id) }}>
           <use xlinkHref="#cart-add" />
@@ -191,8 +191,7 @@ export default defineComponent({
       leftScrollContent(index);
       state.rightBscroll.scrollToElement(el, 1000)
     }
-    const add_food = (n: any, x: any, e: any) => {
-      // console.log(e);
+    const add_food = (n: { name: any; description?: string; foods?: any[]; type_accumulation?: any; }, x: { name: any; tips?: string; month_sales?: string; satisfy_rate?: number; unit_price: any; one_food_id: any; }, e: MouseEvent) => {
       add_shopping_car(n.type_accumulation, n.name, x.name, x.one_food_id, x.unit_price);
       state.ballFlyFun(e)
     }
