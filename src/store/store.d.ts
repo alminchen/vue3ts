@@ -14,7 +14,7 @@ declare namespace StoreStats {
     order_price: number
   }
   interface ojc {
-    [propName: string]: any
+    [x: string]: any
   }
   export interface falseBussinessbrief {
     shop_name: string,
@@ -35,12 +35,7 @@ declare namespace StoreStats {
     discount: string
   }
   export interface falseBussinessInfo {
-    // discountS?: String
-    's10001': nameString,
-    "s10002": nameString,
-    "s10003": nameString,
-    "s10004": nameString,
-    "s10005": nameString,
+    [x: string]: nameString
   }
   interface nameString {
     shop_name: string;
