@@ -103,8 +103,8 @@ export default defineComponent({
       state.listGroupNode.push(el);
     }
     const childEl = (data: { avatar: string; name: string; }[]) => {
-      return data.map((item: { avatar: string; name: string; }, index: number) => {
-        return <li key={index} class="list-group-item">
+      return data.map((item: { avatar: string; name: string; }, idx: number) => {
+        return <li key={idx} class="list-group-item">
           <img class="avatar" v-lazy={item.avatar} onError={(e) => { errorImage(e) }} />
           <span class="name">{item.name}</span>
         </li>
