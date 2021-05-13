@@ -53,7 +53,11 @@ export const falseOrder: StoreStats.falseOrder[] = [{
   "store_name": "上沙麦当劳",
   "order_birth_time": "2017-02-17 18:36",
   "order_state": "订单已完成",
-  "order_content": {},
+  "order_content": {
+    name: '12121',
+    text: "安徽省东安山东",
+    a: 1
+  },
   "order_brief_info": "麦香鸡腿堡",
   "order_price": 22.9
 },

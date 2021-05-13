@@ -9,12 +9,12 @@ declare namespace StoreStats {
     store_name: string,
     order_birth_time: string,
     order_state: string,
-    order_content: ojc,
+    order_content: ojc<string | number>,
     order_brief_info: string,
     order_price: number
   }
-  interface ojc {
-    [x: string]: any
+  interface ojc<T> {
+    [x: string]: T
   }
   export interface falseBussinessbrief {
     shop_name: string,
