@@ -1,9 +1,9 @@
 declare namespace StoreStats {
-  export interface falseHotWord {
+  export type falseHotWord = {
     search_word?: string,
     title?: string
   }
-  export interface falseOrder {
+  export type falseOrder = {
     restaurant_id: string,
     img_src: string,
     store_name: string,
@@ -13,10 +13,10 @@ declare namespace StoreStats {
     order_brief_info: string,
     order_price: number
   }
-  interface ojc<T> {
+  type ojc<T> = {
     [x: string]: T
   }
-  export interface falseBussinessbrief {
+  export type falseBussinessbrief = {
     shop_name: string,
     id: string,
     path: string,
@@ -34,10 +34,10 @@ declare namespace StoreStats {
     notice: string,
     discount: string
   }
-  export interface falseBussinessInfo {
+  export type falseBussinessInfo = {
     [x: string]: nameString
   }
-  interface nameString {
+  type nameString = {
     shop_name: string;
     id: string;
     shop_rating: number;
@@ -60,7 +60,7 @@ declare namespace StoreStats {
     evaluate: evaluateState[],
     commodity: commodityState[]
   }
-  interface evaluateState {
+  type evaluateState = {
     username: string;
     userid: number;
     user_img: string;
@@ -69,14 +69,14 @@ declare namespace StoreStats {
     send_time: number;
     evaluate_details: string;
   }
-  interface commodityState {
+  type commodityState = {
     description: string,
     is_selected: boolean,
     name: string,
     type_accumulation: string,
     foods: foodsState[]
   }
-  interface foodsState {
+  type foodsState = {
     name: string;
     rating: number;
     unit_price: number;
