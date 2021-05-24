@@ -19,6 +19,7 @@ export default defineComponent({
 
     onMounted(() => {
       getSingerList_()
+
       handlePlaylist();
       dispatch("setWhichpage", "myzone")
     })

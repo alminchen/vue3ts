@@ -252,7 +252,7 @@ export default defineComponent({
         state.alertMaskShow = !state.alertMaskShow;
       }
     }
-    const ballFly = (func: any) => {
+    const ballFly = (func: void) => {
       state.ballFlyFun = func
     }
     const cleanShopCar = (): void => {

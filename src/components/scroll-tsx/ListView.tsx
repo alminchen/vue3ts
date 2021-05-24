@@ -78,7 +78,7 @@ export default defineComponent({
     const refresh = (): void => {
       state.scroll && state.scroll.refresh()
     }
-    const scrollToElement = (el: any, time: any): void => {
+    const scrollToElement = (el: HTMLElement, time: any): void => {
       state.scroll && state.scroll.scrollToElement(el, time)
     }
     watch(() => ctx.data, () => {
@@ -99,7 +99,7 @@ export default defineComponent({
         </li>
       })
     }
-    const listGroup = (el: any) => {
+    const listGroup = (el: any): any => {
       state.listGroupNode.push(el);
     }
     const childEl = (data: { avatar: string; name: string; }[]) => {
