@@ -160,7 +160,7 @@ export default defineComponent({
       state.currentIndex = listHeight.length - 2;
       console.log(state.currentIndex);
     })
-    const onShortcutTouchStart = (e: TouchEvent): void => {
+    const onShortcutTouchStart = (e: { target: any, touches: any }): void => {
       const anchorIndex = getData(e.target, "index");
       const firstTouch: any = e.touches[0];
       state.touch.y1 = firstTouch.pageY;

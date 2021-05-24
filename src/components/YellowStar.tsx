@@ -1,4 +1,4 @@
-import { defineComponent, inject, } from 'vue';
+import { defineComponent, inject } from 'vue';
 import "../assets/sass/yellowstar.scss"
 export default defineComponent({
   name: "YellowStar",
@@ -20,9 +20,9 @@ export default defineComponent({
     }
     return () => (
       <>
-        <div class='YellowStar_wrap'>
+        <div class='YellowStar_wrap' >
           <div class='yellow_star v-md'>
-            <div class="back v-md">{htmlEl()}</div>
+            <div class="back v-md" >{htmlEl()}</div>
             <div class="front v-md" style={{ width: props.code * 100 / 5 + "%" }}>{htmlEl()}</div>
           </div>
         </div>

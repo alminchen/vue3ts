@@ -13,8 +13,7 @@ export function addClass (el: { className: any }, className: string): any {
   el.className = newClass.join(' ')
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export function getData (el: any, name: string, val?: any): any {
+export function getData (el: HTMLElement, name: string, val?: string): any {
   const prefix = 'data-'
   if (val) {
     return el.setAttribute(prefix + name, val)
@@ -22,12 +21,7 @@ export function getData (el: any, name: string, val?: any): any {
   return el.getAttribute(prefix + name)
 }
 
-
-
-
 const elementStyle = document.createElement('div').style
-
-
 const vendor = (() => {
   const transformNames: any = {
     webkit: 'webkitTransform',
@@ -36,13 +30,11 @@ const vendor = (() => {
     ms: 'msTransform',
     standard: 'transform'
   }
-
   for (const key in transformNames) {
     if (elementStyle[transformNames[key]] !== undefined) {
       return key
     }
   }
-
   return false
 })()
 
