@@ -3,7 +3,7 @@ export function hasClass (el: { className: string }, className: string): any {
   return reg.test(el.className)
 }
 
-export function addClass (el: { className: any }, className: string): any {
+export function addClass (el: { className: string }, className: string): any {
   if (hasClass(el, className)) {
     return
   }

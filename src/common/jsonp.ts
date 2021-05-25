@@ -1,7 +1,6 @@
 import originJsonp from 'jsonp'
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export default function jsonp (url: string | string[], data: { [x: string]: any }, option: any): any {
+export default function jsonp (url: string | string[], data: { [x: string]: any }, option: { [x: string]: any }): any {
   url += (url.indexOf('?') < 0 ? '?' : '&') + param(data)
 
   return new Promise((resolve, reject) => {
