@@ -13,7 +13,10 @@ const mutations = {
     state.falseBussinessbrief = plateform
   },
   SET_ORDER (state: State, plateform: StoreStats.falseOrder[]): void {
-    state.falseOrder = state.falseOrder?.concat(plateform)
+    // state.falseOrder = state.falseOrder?.concat(plateform)
+    if (Array.isArray(state.falseOrder)) {
+      state.falseOrder = [...plateform, ...state.falseOrder]
+    }
   },
   SET_ALLNUMS (state: State, nums: number): void {
     state.allNums = nums

@@ -12,7 +12,7 @@ const actions = {
   setHomepageMore (context: { commit: Commit }, platform: StoreStats.falseBussinessbrief[]): void {
     context.commit('SET_HOME_PAGE_MORE', platform);
   },
-  setOrder (context: { commit: Commit }, platform: unknown): void {
+  setOrder (context: { commit: Commit }, platform: StoreStats.falseOrder[]): void {
     context.commit('SET_ORDER', platform);
   },
   setAllNums (context: { commit: Commit }, nums: number): void {
