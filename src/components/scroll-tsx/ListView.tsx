@@ -123,8 +123,8 @@ export default defineComponent({
         }]}> {item}</li >
       })
     }
-    const errorImage = (e: any) => {
-      e.target.src = 'http://t8.baidu.com/it/u=3571592872,3353494284&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1603764281&t=bedd2d52d62e141cbb08c462183601c7'
+    const errorImage = (e: Event) => {
+      (e.target as HTMLImageElement).src = 'http://t8.baidu.com/it/u=3571592872,3353494284&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1603764281&t=bedd2d52d62e141cbb08c462183601c7'
     }
 
     const _calculateHeight = () => {
@@ -158,7 +158,6 @@ export default defineComponent({
         }
       }
       state.currentIndex = listHeight.length - 2;
-      console.log(state.currentIndex);
     })
     const onShortcutTouchStart = (e: { target: any, touches: any }): void => {
       const anchorIndex = getData(e.target, "index");
@@ -170,7 +169,7 @@ export default defineComponent({
     const onShortcutTouchMove = (e: TouchEvent): void => {
       const firstTouch = e.touches[0];
       state.touch.y2 = firstTouch.pageY;
-      const delta = ((state.touch.y2 - state.touch.y1) / ANCHOR_HEIGHT) | 0;
+      const delta = ((state.touch.y2 - state.touch.y1) / ANCHOR_HEIGHT) || 0;
       const anchorIndex = parseInt(state.touch.anchorIndex + delta);
       _scrollTo(anchorIndex)
     }

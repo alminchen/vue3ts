@@ -13,4 +13,4 @@ const getters = {
   allNums: (state: State): number | undefined => state.allNums,
   allTotalPrice: (state: State): number | undefined => state.allTotalPrice
 }
-export default getters
+export default getters;
