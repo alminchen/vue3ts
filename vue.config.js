@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-
 // 是否为生产环境
 const isProduction = process.env.NODE_ENV !== 'development';
 
@@ -9,13 +8,6 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 // gzip压缩
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
-
-
-//path引入
-
-// 本地环境是否需要使用cdn
-
-
 
 module.exports = {
 
