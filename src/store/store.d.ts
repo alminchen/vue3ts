@@ -9,11 +9,11 @@ declare namespace StoreStats {
     store_name: string,
     order_birth_time: string,
     order_state: string,
-    order_content: ojc<string | number>,
+    order_content: other<string | number | unknown | never>,
     order_brief_info: string,
     order_price: number
   }
-  type ojc<T> = {
+  type other<T> = {
     [x: string]: T
   }
   export type falseBussinessbrief = {

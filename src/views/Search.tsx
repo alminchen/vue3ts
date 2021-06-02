@@ -7,8 +7,9 @@ import BScroll from "better-scroll"
 import { falseBussinessbrief } from "@/falsedata/falsedata"
 interface search {
   search_text: string,
-  search_res: any[],
+  search_res: StoreStats.falseBussinessbrief[],
   keyword: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [x: string]: any
 }
 export default defineComponent({
@@ -91,7 +92,7 @@ export default defineComponent({
       state.search_res = [...state.search_res, ...getFalseBussinessbrief.value];
     }
     const htmlEl = () => {
-      return state.search_res.map((item: any, index: number) => {
+      return state.search_res.map((item, index: number) => {
         return <OneBusiness item={item} key={index}></OneBusiness>
       })
     }
