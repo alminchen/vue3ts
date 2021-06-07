@@ -56,7 +56,8 @@ export const falseOrder: StoreStats.falseOrder[] = [{
   "order_content": {
     name: '12121',
     text: "安徽省东安山东",
-    a: 1
+    a: 1,
+    s: false
   },
   "order_brief_info": "麦香鸡腿堡",
   "order_price": 22.9

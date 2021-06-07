@@ -9,7 +9,7 @@ declare namespace StoreStats {
     store_name: string,
     order_birth_time: string,
     order_state: string,
-    order_content: other<string | number | unknown | never>,
+    order_content: other<string | number | unknown>,
     order_brief_info: string,
     order_price: number
   }
