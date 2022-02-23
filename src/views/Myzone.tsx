@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import ListView from "@/components/scroll-tsx/ListView"
 import FixNav from "@/components/FixNav"
 import { getSingerList } from "@/api/singer"
@@ -6,6 +7,14 @@ import { useStoreHooks } from '@/hooks';
 import { defineComponent, reactive, ref, onMounted, watch, nextTick, } from 'vue';
 const HOT_NAME = "热门";
 const HOT_SINGER_LEN = 10;
+interface hotMap {
+  title: string,
+  items: any[]
+}
+interface defaultMap {
+  [x: string]: hotMap
+}
+
 export default defineComponent({
   components: { ListView, FixNav },
   name: 'myzone',
@@ -44,13 +53,13 @@ export default defineComponent({
       }
     })
     const normalizeSinger = (list: any[]) => {
-      const map: any = {
+      const map: defaultMap = {
         hot: {
           title: HOT_NAME,
           items: [],
         },
       };
-      list.forEach((item: any, index: number) => {
+      list.forEach((item: { Fsinger_name: any; Fsinger_id: any; Findex: any; Fsinger_mid: any; }, index: number) => {
         if (index < HOT_SINGER_LEN) {
           map.hot.items.push(
             new Singer({

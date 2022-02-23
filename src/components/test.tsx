@@ -12,14 +12,14 @@ export default defineComponent({
     },
   },
   emits: ["method", "ms"],
-  setup (_props: any, { emit }) {
+  setup (_props, { emit }) {
     const method = () => {
       console.log("object");
     }
     const methodSe = () => {
       emit("ms")
     }
-    const methodAdd = (el: any) => {
+    const methodAdd = (el: unknown) => {
       console.log(el);
     }
     const text = ref(null)

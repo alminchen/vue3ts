@@ -90,7 +90,7 @@ export default defineComponent({
       }, 1000);
     }
     const businessEl = () => {
-      return getFalseBussinessbrief.value.map((item: any) => {
+      return getFalseBussinessbrief.value.map((item: Record<string, null> | undefined) => {
         return <OneBusiness item={item}></OneBusiness>
       })
     }

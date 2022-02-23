@@ -1,5 +1,5 @@
-export function setDPR (): any {
-  const viewport: any = document.querySelector('meta[name=viewport]');
+export function setDPR (): void {
+  const viewport = document.querySelector<HTMLElement>('meta[name=viewport]') as HTMLElement;
   if (window.devicePixelRatio === 1) {
     viewport.setAttribute('content', 'width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no');
   }
@@ -10,11 +10,11 @@ export function setDPR (): any {
 export function remChange (): void {
   const resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
   const widthProportion = function (): number {
-    const doc: HTMLElement = document.body || document.documentElement;
-    const p: number = doc.clientWidth;
+    const doc = (document.body || document.documentElement) as HTMLElement;
+    const p = doc.clientWidth as number;
     return p / 10;
   };
-  const changePage = function () {
+  const changePage = function (): void {
     document.getElementsByTagName('html')[0].setAttribute('style', 'font-size:' + widthProportion() + 'px !important');
   };
   changePage();
